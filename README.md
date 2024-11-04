@@ -1,1 +1,1 @@
-# CustomerCRM
+CustomerCRM is a Python-based CRM application designed to streamline customer relationship management. The project is structured to neatly separate concerns: initializing the application and routing setup in `controllers.py`, database connection configuration in `database.py`, and server configuration including port specification in `config.py`. It features robust error handling for smooth server operations and provides clear confirmation upon successful startup, ensuring a user-friendly experience for managing customer interactions efficiently.
