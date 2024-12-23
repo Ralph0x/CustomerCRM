@@ -1,6 +1,7 @@
 from datetime import date
 import json
 from dataclasses import dataclass, field, asdict
+from functools import lru_cache
 
 @dataclass
 class Customer:
@@ -8,6 +9,7 @@ class Customer:
     contact_information: str
     company: str
     
+    @lru_cache(maxsize=None)
     def serialize(self):
         return json.dumps(asdict(self))
 
@@ -18,6 +20,7 @@ class Deal:
     status: str
     description: str
     
+    @lru_cache(maxsize=None)
     def serialize(self):
         deal_dict = asdict(self)
         deal_dict['customer'] = json.loads(deal_dict['customer'].serialize())
@@ -29,6 +32,7 @@ class Interaction:
     interaction_date: date
     notes: str
     
+    @lru_cache(maxsize=None)
     def serialize(self):
         interaction_dict = asdict(self)
         interaction_dict['interaction_date'] = interaction_dict['interaction_date'].isoformat()
